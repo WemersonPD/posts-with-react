@@ -87,27 +87,32 @@ export class Home extends Component {
           </form>
         </div>
 
-        <div className="posts">
-          {
-            filteredPosts.map((post) => (
-              <PostCard
-                cover={post.cover}
-                // id={post.id}
-                title={post.title}
-                body={post.body}
-                key={post.id}
-              />
-            ))
+        {!!filteredPosts.length && <div>
+          <div className="posts">
+            {
+              filteredPosts.map((post) => (
+                <PostCard
+                  cover={post.cover}
+                  // id={post.id}
+                  title={post.title}
+                  body={post.body}
+                  key={post.id}
+                />
+              ))
+            }
+          </div>
+          {!searchValue &&
+            <Button
+              title="Load more"
+              handleClick={this.handleToggleButton}
+              disabled={noMorePosts}
+              type="button"
+            />
           }
         </div>
-        {!searchValue &&
-          <Button
-            title="Load more"
-            handleClick={this.handleToggleButton}
-            disabled={noMorePosts}
-            type="button"
-          />
         }
+
+        {!filteredPosts.length && <p className="text-center">Posts not found with this title =)</p>}
       </div>
     );
   }
