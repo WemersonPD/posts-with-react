@@ -1,0 +1,11 @@
+.button {
+  background-color: darkblue;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: gray;
+}
